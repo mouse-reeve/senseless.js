@@ -55,6 +55,9 @@ var decay = function () {
 };
 
 var typo = function (word) {
+    if (!word) {
+        return word;
+    }
     var letters = word.split('');
     var index = Math.floor(Math.random() * (letters.length - 1));
     var replacement = map[letters[index].toLowerCase()];

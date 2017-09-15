@@ -1,7 +1,5 @@
-// replacement
-
-var replace = function (node, word) {
-    var replace_id = $(node).attr('data-replace-id')
+var replace = function (node) {
+    var replace_id = $(node).attr('data-replace-id');
     var replaceable = $('#' + replace_id);
     if ($(node).attr('data-replaced')) {
         $(replaceable).html($(replaceable).attr('data-original'));
@@ -29,15 +27,14 @@ var recursive_replace = function (node, word) {
             $(child).replaceWith(replacement_text);
         }
     });
-}
+};
 
 var word_substitution = function (original, substitute) {
     var saved_words = [
         'a', 'an', 'the',
         'with', 'for', 'to'
     ];
-    if (original.trim() == '' || saved_words.indexOf(original.toLowerCase()) >= 0
-            || !original.match(/[A-Za-z]/)) {
+    if (original.trim() === '' || saved_words.indexOf(original.toLowerCase()) >= 0 || !original.match(/[A-Za-z]/)) {
         return original;
     }
 
